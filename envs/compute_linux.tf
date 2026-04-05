@@ -45,6 +45,10 @@ resource "oci_core_instance" "oracle_instance" {
     is_monitoring_disabled   = false
     plugins_config {
       desired_state = "ENABLED"
+      name          = "Cloud Guard Workload Protection"
+    }
+    plugins_config {
+      desired_state = "DISABLED"
       name          = "Vulnerability Scanning"
     }
     plugins_config {
@@ -58,10 +62,6 @@ resource "oci_core_instance" "oracle_instance" {
     plugins_config {
       desired_state = "DISABLED"
       name          = "Compute Instance Run Command"
-    }
-    plugins_config {
-      desired_state = "DISABLED"
-      name          = "Cloud Guard Workload Protection"
     }
     plugins_config {
       desired_state = "DISABLED"
