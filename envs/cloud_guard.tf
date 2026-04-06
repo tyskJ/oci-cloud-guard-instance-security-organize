@@ -95,10 +95,7 @@ resource "oci_cloud_guard_target" "root" {
   target_resource_id   = var.tenancy_ocid
   target_resource_type = "COMPARTMENT"
   target_detector_recipes {
-    detector_recipe_id = local.detector_recipes_map["Oracle_Managed_Recipe_Configuration"]
-  }
-  target_detector_recipes {
-    detector_recipe_id = local.detector_recipes_map["Oracle_Managed_Recipe_Activity"]
+    detector_recipe_id = local.detector_recipes_map["Oracle_Managed_Recipe_Instance_Security"]
   }
   target_responder_recipes {
     responder_recipe_id = oci_cloud_guard_responder_recipe.this.id
