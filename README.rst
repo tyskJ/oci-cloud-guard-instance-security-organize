@@ -228,6 +228,7 @@ OCI Cloud Guard Instance Security について整理する
 * その場合、以下コマンドを実行し存在するリソース一覧を確認し削除してください
 
 .. code-block:: bash
+  
   COMPARTMENT_NAME="oci-cloud-guard-instance-security-organize"
   COMPARTMENT_ID=$(oci iam compartment list \
     --lifecycle-state ACTIVE \
