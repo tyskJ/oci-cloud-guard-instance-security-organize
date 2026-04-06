@@ -230,6 +230,7 @@ OCI Cloud Guard Instance Security について整理する
 .. code-block:: bash
   COMPARTMENT_NAME="oci-cloud-guard-instance-security-organize"
   COMPARTMENT_ID=$(oci iam compartment list \
+    --lifecycle-state ACTIVE \
     --profile ADMIN \
     --auth security_token \
     --query "data[?name=='${COMPARTMENT_NAME}'].id | [0]" \
