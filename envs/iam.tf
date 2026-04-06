@@ -6,11 +6,13 @@ resource "oci_identity_policy" "cloud_guard_policy" {
   description    = "This policy allows cloud guard service to detect security vulnerabilities in tenancy"
   name           = "CloudGuardPolicies"
   statements = [
+    ### Below Must Need Policy for CloudGuard Enable and Disable
+    "allow service cloudguard to read tenancies in tenancy",
+    ### Below Option Policy for Recipe
     "allow service cloudguard to manage cloudevents-rules in tenancy where target.rule.type='managed'",
     "allow service cloudguard to read vaults in tenancy",
     "allow service cloudguard to read keys in tenancy",
     "allow service cloudguard to read compartments in tenancy",
-    "allow service cloudguard to read tenancies in tenancy",
     "allow service cloudguard to read audit-events in tenancy",
     "allow service cloudguard to read compute-management-family in tenancy",
     "allow service cloudguard to read instance-family in tenancy",
@@ -28,7 +30,7 @@ resource "oci_identity_policy" "cloud_guard_policy" {
     "allow service cloudguard to read data-safe-family in tenancy",
     "allow service cloudguard to read autonomous-database-family in tenancy",
     "allow service cloudguard to read log-groups in tenancy",
-    # Below For Instance Security
+    ### Below For Instance Security
     "Allow any-user to { WLP_BOM_READ } in tenancy where all { request.principal.id = target.agent.id, request.principal.type = 'workloadprotectionagent'}",
     "Allow any-user to { WLP_CONFIG_READ } in tenancy where all { request.principal.id = target.agent.id, request.principal.type = 'workloadprotectionagent'}",
     "Allow any-user to { WLP_ADHOC_QUERY_READ } in tenancy where all { request.principal.id = target.agent.id, request.principal.type = 'workloadprotectionagent'}",
